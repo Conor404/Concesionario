@@ -1,0 +1,20 @@
+Class vehiculo{
+c_carro = "categoria carro"
+c_camioneta = "categoria camioneta"
+}
+
+Class usuario{
+n_usuario = "nombre de usuario"
+h_compra = "historial de compra"
+}
+
+Class repuestos{
+r_carro = "repuestos carro"
+r_camioneta = "repuestos camioneta"
+}
+
+Class costos{
+precio_r = "precio repuestos"
+precio_v = "precio vehiculos"
+mantenimiento = "costos asociados a reparacion de vehiculos"
+}
