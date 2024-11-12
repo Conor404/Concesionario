@@ -56,6 +56,8 @@ carro3 = "Modelo: Culo 2019\nPrecio: 8.000$\nTipo de Vehiculo: Carro todo terren
 camioneta1 = "Modelo: Toyobobo\nPrecio: 123.390$\nTipo de Vehiculo: Carro tipo farandula"
 camioneta2 = "Modelo: Yamato\nPrecio: 12B$\nTipo de Vehiculo: Vehiculo naval Blindado"
 camioneta3 = "Modelo: Panzer 4FJ\nPrecio: 210.000$\nTipo de Vehiculo: Tanque mediano"
+
+
 print("-"*50)
 print(f"Ingrese un numero relacionado a las acciones")
 print("1)Catalogo")
@@ -68,20 +70,22 @@ match pregunta:
         print("1) Carros")
         print("2) Camionetas")
         catalogo1 = str(input())
-        match "1":
+        match catalogo1:
             case "1":
-                print("Cual de los tipos1 de carros disponibles desea averiguar?: ")
+                print("Cual de las categorias de carros disponibles desea averiguar?: ")
                 print(f"1) Toyota 2019")
                 print(f"2) Pene 2020")
                 print(f"3) Culo 2019")
                 carros = str(input())
-                match "1":
+                match carros:
                     case "1":
                         print(carro1)
                     case "2":
                         print(carro2)
                     case "3":
                         print(carro3)
+                    case _:
+                        print("Por favor, escoja una opcion valida")
 
             case "2":
                 print("Cual de las camionetas disponibles desea averiguar?: ")
@@ -89,10 +93,14 @@ match pregunta:
                 print(f"2) Yamato")
                 print(f"3) Panzer 4FJ")
                 camionetas = str(input())
-                match "2":
+                match camionetas:
                     case "1":
                         print(f"{camioneta1}")
                     case "2":
                         print(f"{camioneta2}")
                     case "3":
                         print(f"{camioneta3}")
+                    case _:
+                        print("Por favor, escoja una opcion valida")
+    case _:
+        print("Seleccione una opcion valida")
