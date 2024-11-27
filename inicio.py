@@ -21,7 +21,6 @@ class Sesion:
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
 
-        # Guardar los campos de entrada como atributos de la instancia
         self.correo = CTkEntry(frame, placeholder_text='Usuario', border_color='#2cb67d', fg_color='#010101', width=220, height=40)
         self.correo.grid(columnspan=2, row=1, padx=4, pady=4)
 
@@ -35,33 +34,33 @@ class Sesion:
                                 text='Entrar', command=self.validar)  # Aquí se vincula el método
         bt_iniciar.grid(columnspan=2, row=4, padx=4, pady=4)
 
-        self.info_login = None  # Inicializar la variable para la etiqueta de información
+        self.info_login = None
 
         self.root.mainloop()
 
     def validar(self):
-        # Obtener el nombre de usuario y la contraseña
-        obtener_usuario = self.correo.get()  # Accede al campo de usuario
-        obtener_contrasena = self.contrasenna.get()  # Accede al campo de contraseña
+        # aqui se pide el user y la contra
+        obtener_usuario = self.correo.get() 
+        obtener_contrasena = self.contrasenna.get() 
         
         # Verifica si el usuario y la contraseña son correctos
         if obtener_usuario != user or obtener_contrasena != contra:
-            # En caso de tener ya un elemento "info_login" (etiqueta) creado, lo borra
+            # En caso de tener ya tener una etiqueta creada, la borra pa q no se acumulen
             if self.info_login is not None:
                 self.info_login.destroy()
             # Crea esta etiqueta siempre que el login sea incorrecto
             self.info_login = CTkLabel(self.root, text="Usuario o contraseña incorrectos.")
             self.info_login.grid(columnspan=2, row=5, padx=4, pady=4)  # Usar grid aquí
         else:
-            # En caso de tener ya un elemento "info_login" (etiqueta) creado, lo borra
+            # En caso de tener ya una etiqueta creada, la borra para que no se acumulen x2
             if self.info_login is not None:
                 self.info_login.destroy()
-            # Crea esta etiqueta siempre que el login sea correcto
+            # Crea este mensaje si los datos (admin) estan buenos
             self.info_login = CTkLabel(self.root, text=f"Hola, {obtener_usuario}. Espere unos instantes...")
             self.info_login.grid(columnspan=2, row=5, padx=4, pady=4)  # Usar grid aquí
             
-            # Cerrar la ventana después de un breve retraso
-            self.root.after(2000, self.root.destroy)  # Espera 2 segundos y luego cierra la ventana
+            # esta mamada nada mas hace que se tarde 2 segundos en cerrarse
+            self.root.after(2000, self.root.destroy)  # hace q se vea mas serio
 
 if __name__ == "__main__":
     Sesion()
