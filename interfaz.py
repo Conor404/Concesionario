@@ -1,8 +1,9 @@
 # PARA QUE LES FUNCIONE TIENEN QUE INSTALAR LA LIBRERIA CON -pip install customtkinter-
+from inicio import Sesion,user
 import customtkinter as ctk 
 import os
 from PIL import ImageTk, Image
-
+Sesion()
 carpeta_principal = os.path.dirname(__file__)
 carpeta_imagenes = os.path.join(carpeta_principal,"Imagenes")
 
