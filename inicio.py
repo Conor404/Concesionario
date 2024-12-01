@@ -15,6 +15,7 @@ class Sesion:
         self.root.config(bg='#010101')
         self.root.title("Inicio de Sesión")
         self.root.iconbitmap(os.path.join(carpeta_imagenes,"logoSimple.ico"))
+        self.root.protocol("WM_DELETE_WINDOW", self.cerrar_aplicacion_si_no_hay_datos)
         
         frame = CTkFrame(self.root, fg_color='#a6a6a6')
         frame.grid(column=0, row=0, sticky='nsew', padx=0, pady=0)
@@ -53,18 +54,22 @@ class Sesion:
             if self.info_login is not None:
                 self.info_login.destroy()
             # Crea esta etiqueta siempre que el login sea incorrecto
-            self.info_login = CTkLabel(self.root, text="Usuario o contraseña incorrectos.")
+            self.info_login = CTkLabel(self.root, text="Usuario o contraseña incorrectos.", fg_color="#4d5053", text_color="white")
             self.info_login.grid(columnspan=2, row=5, padx=4, pady=4)  # Usar grid aquí
         else:
             # En caso de tener ya una etiqueta creada, la borra para que no se acumulen x2
             if self.info_login is not None:
                 self.info_login.destroy()
             # Crea este mensaje si los datos (admin) estan buenos
-            self.info_login = CTkLabel(self.root, text=f"Hola, {obtener_usuario}. Espere unos instantes...")
+            self.info_login = CTkLabel(self.root, text=f"Hola, {obtener_usuario}. Espere unos instantes...", fg_color="#4d5053", text_color="white")
             self.info_login.grid(columnspan=2, row=5, padx=4, pady=4)  # Usar grid aquí
             
             # esta mamada nada mas hace que se tarde 2 segundos en cerrarse
             self.root.after(2000, self.root.destroy)  # hace q se vea mas serio
+    def cerrar_aplicacion_si_no_hay_datos(self):
+        # Verificar si los campos están vacíos y cerrar la aplicación si es así
+        if not self.correo.get() or not self.contrasena.get():
+            sys.exit()
 
 if __name__ == "__main__":
     Sesion()
