@@ -14,32 +14,33 @@ class Ventana:
         self.app.title("Ventus Novus")
         self.app.iconbitmap(os.path.join(carpeta_imagenes, "logoSimple.ico"))
         self.app.resizable(True, True)
+        self.app.grid_columnconfigure(0, weight=1)
+        self.app.grid_rowconfigure(0,weight=1)
 
         # Frame para contener el mensaje de bienvenida
-        self.top_frame = ctk.CTkFrame(master=self.app)
-        self.top_frame.grid(row= 0, column=2, padx=20, pady=20)
+        self.top_frame = ctk.CTkFrame(master=self.app, width=200, height=200)
+        self.top_frame.grid(row= 0, column=0, padx=0, pady=0, sticky="new")
+        self.top_frame.grid_columnconfigure((0, 1, 2), weight=1)
         # Frame para contener el boton de menu
-        self.frame_menu = ctk.CTkFrame(master=self.app)
-        self.frame_menu.grid(row=0, column= 0, pady=10, padx=10)
+        self.frame_menu = ctk.CTkFrame(master=self.top_frame)
+        self.frame_menu.grid(row=0, column= 0, pady=10, padx=20, sticky="w")
 
         # Etiqueta de bienvenida centrada
         self.bienvenida_label = ctk.CTkLabel(master=self.top_frame, text=f"Bienvenido de vuelta {user}")
-        self.bienvenida_label.grid(row= 0, column=2, padx=20, pady=20)
+        self.bienvenida_label.grid(row= 0, column=1, padx=(0,20), pady=20, sticky="nesw")
 
         # Botón "Menu" en la parte superior izquierda
         self.menu_button = ctk.CTkButton(master=self.frame_menu, text="Menu", command=self.frame_menu)
-        self.menu_button.grid(row= 0, column=0, padx=20, pady=20)  # Ajustar el padding para moverlo más arriba
+        self.menu_button.grid(row= 0, column=0, padx=(10,10), pady=(20))  # Ajustar el padding para moverlo más arriba
 
         # Logo en la parte superior derecha
         logoV = ctk.CTkImage(
             light_image=Image.open((os.path.join(carpeta_imagenes, "logoOpaco.png"))),
             size=(100, 100),
-            
-        )
+            )
         
-        self.etLogoV = ctk.CTkLabel(master=self.app, image=logoV, text="")
-        self.etLogoV.grid(row= 0, column=1)
-        self.app.grid_columnconfigure(2, weight=1)
+        self.etLogoV = ctk.CTkLabel(master=self.top_frame, image=logoV, text="")
+        self.etLogoV.grid(row= 0, column=2,padx=(0,50), pady=0, sticky="e")
         # Frame que se desplegará
         self.nuevo_frame = None
         self.menu_visible = False
