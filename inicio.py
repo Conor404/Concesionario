@@ -1,8 +1,8 @@
 from customtkinter import *
 
 # Usuario y contraseña
-user = "admin"
-contra = "admin"
+user = ""
+contra = ""
 
 carpeta_principal = os.path.dirname(__file__)
 carpeta_imagenes = os.path.join(carpeta_principal,"Imagenes")
@@ -16,7 +16,7 @@ class Sesion:
         self.root.title("Inicio de Sesión")
         self.root.iconbitmap(os.path.join(carpeta_imagenes,"logoSimple.ico"))
         self.root.protocol("WM_DELETE_WINDOW", self.cerrar_aplicacion_si_no_hay_datos)
-        
+        self.root.resizable(False,False)
         frame = CTkFrame(self.root, fg_color='#a6a6a6')
         frame.grid(column=0, row=0, sticky='nsew', padx=0, pady=0)
 

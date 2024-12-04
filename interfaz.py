@@ -33,14 +33,15 @@ class Ventana:
         # Logo en la parte superior derecha
         logoV = ctk.CTkImage(
             light_image=Image.open((os.path.join(carpeta_imagenes, "logoOpaco.png"))),
-            size=(100, 100)
+            size=(100, 100),
+            
         )
         
-        """self.etLogoV = ctk.CTkLabel(master=self.app, image=logoV, text="")
-        self.etLogoV.grid(row= 1, column=1)"""
+        self.etLogoV = ctk.CTkLabel(master=self.app, image=logoV, text="")
+        self.etLogoV.grid(row= 0, column=1)
         self.app.grid_columnconfigure(2, weight=1)
         # Frame que se desplegará
-        """self.nuevo_frame = None"""
+        self.nuevo_frame = None
         self.menu_visible = False
         self.app.mainloop()
         
@@ -53,7 +54,7 @@ class Ventana:
         else:
             self.nuevo_frame.grid(row=0, column=0, sticky="nsew", padx=20, pady=20)
         self.menu_visible = not self.menu_visible
-    """
+        
     def frame_menu(self):
         # Si el frame ya está desplegado, lo ocultamos
         if self.nuevo_frame is not None:
@@ -75,5 +76,5 @@ class Ventana:
     def boton_click(self, i):
         # Acción a realizar al hacer clic en un botón
         print(f"Has hecho clic en el Carro me voya matar {i + 1}")
-    """
+    
 app = Ventana()
